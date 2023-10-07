@@ -24,6 +24,23 @@ console.log('clicked')
   setNewItem('');
   console.log(todos)
 }
+
+function toggleComplete(id, checked){
+  setTodos(currentTodos=> {
+      return currentTodos.map(todo => {
+        if(todo.id ==id) {
+          return{...todo, completed:checked}
+        }
+        return todo
+      })
+  }) 
+}
+
+function deletedTodos(id) {
+    setTodos(currentTodos=> {
+      return currentTodos.filter(todo=> todo.id != id)
+    }) 
+}
   
   return (
 
@@ -56,12 +73,13 @@ console.log('clicked')
    </div>
       <div id="container">
         <label className='completed-label'>completed:</label>
-   <input  type='checkbox' checked={todo.completed}></input>
-   <button type="button">Delete</button>
+   <input  type='checkbox' checked={todo.completed}  onChange={(e)=> toggleComplete(todo.id,e.target.checked)}  ></input>
+   <button type="button" onClick={() =>deletedTodos(todo.id)}>Delete</button>
 </div>
    </div>
       )
     })}
+
    
    
   </div>
