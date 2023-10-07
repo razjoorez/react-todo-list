@@ -4,9 +4,9 @@ import { useState } from 'react';
 
 function App() {
  const [newItem, setNewItem]=  useState("");
- const [todos, setTodos] = useState([{id: Math.random(), name: 'new todo do be doo', completed: false},
-         {id: Math.random(), name: 'todo 2', completed: true},
-         {id: Math.random(), name: 'todo3 ', completed: false}]);
+ const [todos, setTodos] = useState([{id: Math.random(), name: 'Do car mot', completed: false},
+         {id: Math.random(), name: 'shopping for the week', completed: true},
+         {id: Math.random(), name: 'Exercise', completed: false}]);
 
 function handleSubmit(e){
   e.preventDefault();
