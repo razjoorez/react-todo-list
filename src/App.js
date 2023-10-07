@@ -5,18 +5,35 @@ import { useState } from 'react';
 function App() {
  const [newItem, setNewItem]=  useState("");
  const [todos, setTodos] = useState([{id: Math.random(), name: 'new todo do be doo', completed: false},
-         {id: Math.random(), name: 'todo 2', completed: false},
+         {id: Math.random(), name: 'todo 2', completed: true},
          {id: Math.random(), name: 'todo3 ', completed: false}]);
+
+function handleSubmit(e){
+  e.preventDefault();
+console.log('clicked')
+  setTodos((currentTodos) => {
+    return [
+      ...currentTodos, {
+        id:Math.random(),
+        name: newItem,
+        completed: false
+      }
+    ]
+   
+  });
+  setNewItem('');
+  console.log(todos)
+}
   
   return (
 
     <div className='container'>
         <h1>Todo List</h1>
-    <form>
+    <form onSubmit={handleSubmit}>
       <label htmlFor='item'>Add Item</label>
-      <input id='item' placeholder='Add a new todo item...' value={newItem} onChange={(e)=> setNewItem(e.target.value)}></input>
+      <input required id='item' placeholder='Add a new todo item...' value={newItem} onChange={(e)=> setNewItem(e.target.value)}></input>
       
-      <button >Add</button>
+      <button type='submit'>Add</button>
       
     </form>
 
@@ -28,19 +45,24 @@ function App() {
       Task Name
     </div>
      <div className="row-item">
-      Task Name
+      Edit task
     </div>
     </div>
-    
-    <div className="table-row">
-       <div className="row-item">
-      Task Name
-    </div>
-       <div id="container">
-    <button type="button">Button     1</button>
-    <button type="button">Button 2</button>
+    {todos.map(todo => {
+      return (
+      <div key={todo.id} className="table-row">
+      <div className="row-item">
+     {todo.name}
+   </div>
+      <div id="container">
+        <label className='completed-label'>completed:</label>
+   <input  type='checkbox' checked={todo.completed}></input>
+   <button type="button">Delete</button>
 </div>
-    </div>
+   </div>
+      )
+    })}
+   
    
   </div>
 

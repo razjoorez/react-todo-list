@@ -19,7 +19,7 @@ input{
   border-radius: 5px;
 }
 
-button{
+button, input[type='checkbox'], .completed-label{
   background: #00b9bc;
   color: white;
   font-size: 16px;
