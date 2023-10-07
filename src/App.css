@@ -12,7 +12,7 @@ body {
   
 }
 
-input, button {
+input{
   margin-bottom: 10px;
   line-height: 40px;
   padding-left:10px;
@@ -25,6 +25,8 @@ button{
   font-size: 16px;
   border:none;
   line-height: 40px;
+  flex-grow: 1; /* this one line tells button to stretch across all available width */
+ margin: 5px;
 }
 
 
@@ -33,6 +35,46 @@ h1, label {
   text-align: center;
 }
 
-ul {
-  list-style: none;
+
+.table-container {
+  display:flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  margin:30px auto;
+  width:70%;
 }
+
+.table-row {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  border-bottom: 1px solid #dadada;
+}
+
+.row-item{
+  display:flex;
+  flex-flow: row no-wrap;
+  flex:1;
+  justify-content:center;
+  color:wheat;
+  font-size:20px;
+  border:2px solid white;
+  line-height: 50px;
+}
+
+#container {
+  display: flex;
+  justify-content: space-around;
+  flex:1;
+  height: 50px;
+  border:solid 2px wheat;
+}
+
+
+
+.edit {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
